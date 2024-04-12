@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.o">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <title>Node | <%=title%></title>
+    </head>
+    <body>
+        <nav>
+            <ol>
+                <li><a href="/">Go to functions page</a></li>
+            </ol>
+        </nav>
+        <div class="take-info content">
+            <label for="email">Customer's Email: </label>
+            <input type="email" id="email" name="email" value ="" required maxlength="50">
+            <button id="submit">Submit</button>
+        </div>
+        <ul class= "reports", id= "reports">
+
+        </ul>
+        <script>
+            const email = document.getElementById("email");
+            const submit  = document.getElementById("submit");
+            const reports  = document.getElementById("reports");
+             submit.addEventListener("click", e =>
+            {
+                //using fetch api to send the delete request bc form doe snot support delete and put request
+                fetch(`/reports/${email.value}`,{
+                    method: "GET",
+                }).then(response => response.json())
+                .then(data => {
+                    reports.innerHTML = "";
+                    if(data.length>0){
+                        reports.innerHTML+=`<h3>Customer Name: </h3>
+                                ${data[0].customerName}
+                                <h3>Customer Email:</h3>
+                                ${data[0].customerEmail}
+                                <br>
+                                <hr>
+                                <br>`;
+                        console.log(data.length);
+                        for(let i = 0 ;  i < data.length; i++){
+                            reports.innerHTML+=`
+                                <h3>Employee Name: </h3>
+                                ${data[i].employeeName}
+                                <h3>Employee Email:</h3>
+                                ${data[i].employeeEmail}
+                                <h3>Report :</h3>
+                                ${data[i].data}
+                                <h3>Date :</h3>
+                                ${data[i].startDate}
+                                <br>    
+                                <hr>
+                                <br>`;
+                        }
+            
+                    }
+                    else{
+                        if(data.code === 0){
+                            alert(data.message)
+                        }
+                        else{
+                            alert("There is no report for this customer")
+                        }
+                        // reports.innerHTML+=`<h3 class=null id=null> There is no report for this customer</h3>`
+                    }
+           
+                })
+                .catch(err => console.log(err));
+            });
+        </script>
+    </body>
+</html>

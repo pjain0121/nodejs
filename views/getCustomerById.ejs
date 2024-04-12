@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.o">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <!-- <title>Node | <%=title%></title> -->
+    </head>
+    <body>
+        <nav>
+            <ol>
+                <li><a href="/">Go to functions page</a></li>
+            </ol>
+        </nav>
+        <!-- <div>
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" value ="" required maxlength="50">
+            <button id="submit">Submit</button>
+        </div> -->
+        <div class="type-info content">
+        
+            <form>
+        
+                <label for="email">Customer Email : </label>
+        
+                <input type="email" id="email" name="email" value ="" required maxlength="50">
+        
+                <button id="submit">Submit</button>
+        
+            </form>
+        </div>
+        <p class="customers" id= "customers">
+
+        </p>
+        <script>
+            const email = document.getElementById("email");
+            const submit  = document.getElementById("submit");
+            const employee  = document.getElementById("employee");
+             submit.addEventListener("click", e =>
+            {
+                //using fetch api to send the delete request bc form doe snot support delete and put request
+                fetch(`/customers/${email.value}`,{
+                    method: "GET",
+                }).then(response => response.json())
+                .then(data => {
+                    if(data.length>0){
+                    
+                        console.log(data);
+                    
+                        employee.innerHTML+=`<h3>Name: </h3>
+                            ${data[0].name} ${data[0].lastName}
+                            <h3>Email:</h3>
+                            ${data[0].email}
+                            <h3>Start Date :</h3>
+                            ${data[0].Date}
+                            <br>    
+                            <hr>
+                            <br>`
+            
+                    }
+                    else{
+                        employee.innerHTML+=`<h3 class=null id=null> There is no employer with this email address</h3>`
+                    }
+           
+                })
+                .catch(err => console.log(err));
+            });
+        </script>
+    </body>
+</html>

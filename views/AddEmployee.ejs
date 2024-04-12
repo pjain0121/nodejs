@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.o">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <title>Node | <%=title%></title>
+    </head>
+    <body>
+
+    <nav>
+        <ul>
+  
+             <li><a href="/">Go to functions page</a></li>
+
+        </ul>
+     </nav>
+     <div class="take-info content">
+        <form action="/employees" method= "POST">
+            <label for="email">Email: </label>
+            <input type="email" id="email" name="email" value ="" required maxlength="50">
+
+            <label for="name">First Name </label>
+            <input type="text" id="name" name="name" value ="" required maxlength="20">
+
+            <label for="lastName">Last Name: </label>
+            <input id="lastName" name="lastName" value="" required maxlength="20">
+
+            <label for="position">Position:  </label>
+            <input type="text" id="position" name="position" value ="" required maxlength="50">
+
+            <button id="submit" class="submit">Add Employee</button>
+            </form>
+        </div>
+        
+        
+
+    </body>  
+</html>

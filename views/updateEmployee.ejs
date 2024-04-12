@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.o">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <title>Node | <%=title%></title>
+    </head>
+    <body>
+
+        <nav>
+           <ul>
+     
+                <li><a href="/">Go to functions page</a></li>
+
+           </ul>
+        </nav>
+        <div class="take-info content">
+        <form>
+            <label for="oldEmail">Old Email: </label>
+            <input type="email" id="oldEmail" name="oldEmail" value ="" required maxlength="50">
+
+            <label for="newEmail">New Email: </label>
+            <input type="email" id="newEmail" name="newEmail" value ="" required maxlength="50">
+
+            <label for="name">First Name </label>
+            <input type="text" id="name" name="name" value ="" required maxlength="20">
+
+            <label for="lastName">Last Name: </label>
+            <input id="lastName" name="lastName" value="" required maxlength="20">
+            
+
+            <label for="position">Position:  </label>
+            <input type="text" id="position" name="position" value ="" required maxlength="50">
+
+            <button id="submit" >Submit</button>
+        </form>
+        </div>
+        
+        
+        <script>
+            const submit  = document.getElementById("submit");
+            const name = document.getElementById("name");
+            const lastName = document.getElementById("lastName");
+            const oldEmail = document.getElementById("oldEmail");
+            const newEmail = document.getElementById("newEmail");
+            const position = document.getElementById("position");
+            submit.addEventListener("click", e =>
+            {
+                //using fetch api to send the delete request bc form doe snot support delete and put request
+                fetch(`/employees`,{
+                    method: "PUT",
+                    body : JSON.stringify({
+                        name : name.value,
+                        lastName : lastName.value,
+                        oldEmail :oldEmail.value,
+                        newEmail : newEmail.value,
+                        position : position.value
+                    }),
+                    headers : {
+                        'Content-Type': 'application/json'
+                    }
+                }).then(alert("success"))
+                .catch(err => console.log(err));
+            });
+        </script>
+    </body>  
+</html>

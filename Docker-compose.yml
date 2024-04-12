@@ -1,0 +1,18 @@
+version: "3"
+services:
+  mynode:
+    build: .
+    depends_on:
+      - mysql
+    ports:
+      - "8080:8080"
+  
+  mysql:
+    image: mysql
+    ports:
+      - "3000:3000"
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD : "#0121080Pr"
+      MYSQL_USER: root
+      MYSQL_DATABASE: cbo
