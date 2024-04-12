@@ -1,0 +1,17 @@
+{
+  "name": "projectat2",
+  "version": "1.0.0",
+  "dependencies": {
+    "express": "*",
+    "mysql": "*",
+    "body-parser": "*",
+    "ejs": "*"
+  },
+  "description": "project",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}

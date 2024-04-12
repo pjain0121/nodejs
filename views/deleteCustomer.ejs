@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.o">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <title>Node | <%=title%></title>
+    </head>
+    <body>
+        <nav>
+            <ol>
+      
+                 <li><a href="/">Go to functions page</a></li>
+ 
+            </ol>
+         </nav>
+         <div class="type-info content">
+        
+            <form>
+        
+                <label for="email">Customer Email : </label>
+        
+                <input type="email" id="email" name="email" value ="" required maxlength="50">
+        
+                <button id="submit">Submit</button>
+        
+            </form>
+        </div>
+        <script>
+            const trash  = document.getElementById("submit");
+            const eMail = document.getElementById("email");
+            trash.addEventListener("click", e =>
+            {
+                //using fetch api to send the delete request bc form doe snot support delete and put request
+                fetch(`/customers/${eMail.value}`,{
+                    method: "DELETE"
+                }).then(alert("Success"))
+                .catch(err => console.log(err));
+            });
+
+        </script>
+        
+    
+    </body>  
+</html>

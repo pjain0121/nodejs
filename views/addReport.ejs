@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.o">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <link rel="stylesheet" type="text/css" href="/style.css">
+        <title>Node | <%=title%></title>
+    </head>
+    <body>
+
+    <nav>
+        <ol>
+  
+             <li><a href="/">Go to functions page</a></li>
+
+        </ol>
+     </nav>
+     <div class="take-info content">
+        <form action="/reports" method= "POST">
+            <label for="customerEmail">Customer Email: </label>
+            <input type="email" id="customerEmail" name="customerEmail" value ="" required maxlength="50">
+
+            <label for="customerName">First Name </label>
+            <input type="text" id="customerName" name="customerName" value ="" required maxlength="40">
+
+            <label for="employeeEmail">Employee Email: </label>
+            <input type="email" id="employeeEmail" name="employeeEmail" value ="" required maxlength="50">
+
+            <label for="employeeName">First Name </label>
+            <input type="text" id="employeeName" name="employeeName" value ="" required maxlength="40">
+            <label for="data">Report Data: </label>
+            <textarea id="data" name="data" value="" required maxlength="1200" style="height: 250px; width: 250px;">Report: </textarea>
+
+            <button id="submit">Submit</button>
+            
+        </form>            
+    </div>    
+
+    </body>  
+</html>
